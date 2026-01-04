@@ -183,14 +183,16 @@ export default function RegisterPage() {
               >
                 I agree with and have read the{" "}
                 <Link
-                  href="/terms"
+                  href="https://abex.work/terms"
+                  target="_blank"
                   className="text-[#FF8356] hover:text-[#FF9576]"
                 >
                   Terms of Service
                 </Link>{" "}
                 and{" "}
                 <Link
-                  href="/privacy"
+                  href="https://abex.work/privacy"
+                  target="_blank"
                   className="text-[#FF8356] hover:text-[#FF9576]"
                 >
                   Privacy Policy

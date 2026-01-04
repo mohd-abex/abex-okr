@@ -61,6 +61,7 @@ export type Objective = {
     name: string;
   };
   keyResults?: KR[];
+  key_results_count?: number;
 };
 
 type Comment = {
@@ -102,6 +103,7 @@ export default function ObjectiveCard({
   const isEmployee = currentRole?.toLowerCase() === "employee";
 
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [hasFetched, setHasFetched] = useState<boolean>(false);
   const [krs, setKrs] = useState<KR[]>(objective.keyResults ?? []);
   const [loadingKRs, setLoadingKRs] = useState(false);
   const [loadingAction, setLoadingAction] = useState(false);
@@ -126,8 +128,10 @@ export default function ObjectiveCard({
       if (res.ok) {
         const data: KR[] = await res.json();
         setKrs(data);
+        setHasFetched(true);
       } else {
         setKrs([]);
+        setHasFetched(true);
       }
     } catch (err) {
       console.error("Failed to fetch key results", err);
@@ -318,7 +322,11 @@ export default function ObjectiveCard({
                 aria-expanded={expanded}
                 aria-controls={`krs-${objective.id}`}
               >
-                Key Results ({krs.length})
+                Key Results (
+                {hasFetched
+                  ? krs.length
+                  : objective.key_results_count ?? krs.length}
+                )
                 {expanded ? (
                   <ChevronUp className="w-4 h-4" />
                 ) : (

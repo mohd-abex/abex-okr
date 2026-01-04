@@ -345,105 +345,105 @@ export function TeamsView() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {loadingTeams
             ? Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl border border-zinc-100 p-4 bg-gray-100 space-y-3 shadow-sm"
-                >
-                  <div className="flex items-center justify-between">
-                    <Skeleton className="h-4 w-32" />
-                    <Skeleton className="h-5 w-16" />
-                  </div>
-                  <Skeleton className="h-3 w-48" />
-                  <div className="flex gap-8">
-                    <Skeleton className="h-6 w-10" />
-                    <Skeleton className="h-6 w-10" />
-                    <Skeleton className="h-6 w-10" />
-                  </div>
-                  <Skeleton className="h-2 w-full" />
+              <div
+                key={i}
+                className="rounded-2xl border border-zinc-100 p-4 bg-gray-100 space-y-3 shadow-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-5 w-16" />
                 </div>
-              ))
+                <Skeleton className="h-3 w-48" />
+                <div className="flex gap-8">
+                  <Skeleton className="h-6 w-10" />
+                  <Skeleton className="h-6 w-10" />
+                  <Skeleton className="h-6 w-10" />
+                </div>
+                <Skeleton className="h-2 w-full" />
+              </div>
+            ))
             : teams.map((team) => (
-                <div
-                  key={team.id}
-                  className="rounded-2xl border border-zinc-100 p-4 bg-gray-100 space-y-3 shadow-sm"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="min-w-0">
-                      <h3 className="text-lg font-semibold text-zinc-900">
-                        {team.name}
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <Badge className={statusColor(team.status)}>
-                        {statusLabel(team.status)}
-                      </Badge>
-                      {user?.role === "admin" && (
-                        <>
-                          <button
-                            aria-label={`Edit team ${team.name}`}
-                            onClick={() => handleEditTeam(team)}
-                            className="p-1 rounded hover:bg-zinc-50"
-                          >
-                            <Edit size={16} className="text-zinc-600" />
-                          </button>
-                          <button
-                            aria-label={`Delete team ${team.name}`}
-                            onClick={() =>
-                              openConfirmDelete(team.id, "team", team.name)
-                            }
-                            className="p-1 rounded hover:bg-zinc-50"
-                          >
-                            <Trash size={16} className="text-red-600" />
-                          </button>
-                        </>
-                      )}
-                    </div>
+              <div
+                key={team.id}
+                className="rounded-2xl border border-zinc-100 p-4 bg-gray-100 space-y-3 shadow-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-semibold text-zinc-900">
+                      {team.name}
+                    </h3>
                   </div>
 
-                  <div>
-                    <p className="font-medium text-zinc-900">
-                      {team.team_lead?.name || "___"}
-                    </p>
-                    <p className="text-xs text-zinc-500">Team Lead</p>
-                  </div>
-                  <div className="flex justify-between">
-                    <div className="text-center">
-                      <p className="text-lg font-semibold text-zinc-900">
-                        {team.members_count}
-                      </p>
-                      <p className="text-xs text-zinc-500">Members</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-lg font-semibold text-zinc-900">
-                        {team.active_okrs_count}
-                      </p>
-                      <p className="text-xs text-zinc-500">Active OKRs</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-lg font-semibold text-zinc-900">
-                        {team.average_progress}%
-                      </p>
-                      <p className="text-xs text-zinc-500">Avg Progress</p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 text-sm">
-                    <p className="text-sm text-zinc-700">Team Progress</p>
-                    <div className="w-full rounded-full bg-[#FFE7DF] h-2 overflow-hidden">
-                      <div
-                        className="h-2 bg-[#FF8A5B] rounded-full"
-                        style={{
-                          width: `${Math.max(
-                            0,
-                            Math.min(100, team.average_progress)
-                          )}%`,
-                        }}
-                      />
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Badge className={statusColor(team.status)}>
+                      {statusLabel(team.status)}
+                    </Badge>
+                    {user?.role === "admin" && (
+                      <>
+                        <button
+                          aria-label={`Edit team ${team.name}`}
+                          onClick={() => handleEditTeam(team)}
+                          className="p-1 rounded hover:bg-zinc-50"
+                        >
+                          <Edit size={16} className="text-zinc-600" />
+                        </button>
+                        <button
+                          aria-label={`Delete team ${team.name}`}
+                          onClick={() =>
+                            openConfirmDelete(team.id, "team", team.name)
+                          }
+                          className="p-1 rounded hover:bg-zinc-50"
+                        >
+                          <Trash size={16} className="text-red-600" />
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
-              ))}
+
+                <div>
+                  <p className="font-medium text-zinc-900">
+                    {team.team_lead?.name || "___"}
+                  </p>
+                  <p className="text-xs text-zinc-500">Team Lead</p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-zinc-900">
+                      {team.members_count}
+                    </p>
+                    <p className="text-xs text-zinc-500">Members</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-zinc-900">
+                      {team.active_okrs_count}
+                    </p>
+                    <p className="text-xs text-zinc-500">Active OKRs</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-zinc-900">
+                      {team.average_progress}%
+                    </p>
+                    <p className="text-xs text-zinc-500">Avg Progress</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2 text-sm">
+                  <p className="text-sm text-zinc-700">Team Progress</p>
+                  <div className="w-full rounded-full bg-[#FFE7DF] h-2 overflow-hidden">
+                    <div
+                      className="h-2 bg-[#FF8A5B] rounded-full"
+                      style={{
+                        width: `${Math.max(
+                          0,
+                          Math.min(100, team.average_progress)
+                        )}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
       )}
 
@@ -670,9 +670,11 @@ export function CreateTeamFormModal({
       },
       body: JSON.stringify({ name: teamName }),
     });
-    console.log(res);
 
-    if (!res.ok) throw new Error("Failed to create team");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Failed to create team");
+    }
 
     setTeamName("");
     setOpen(false);

@@ -52,21 +52,19 @@ export function AppSidebar() {
       variant="sidebar"
       style={
         {
-          "--sidebar-width": "20rem",
-          "--sidebar-width-icon": "4.5rem",
+          "--sidebar-width": "18rem",
+          "--sidebar-width-icon": "4rem",
         } as React.CSSProperties
       }
       className={`
         flex-shrink-0 rounded-[1.9rem] bg-gray-100 shadow-sm border border-slate-200 p-4
-        ${
-          collapsible === "icon"
-            ? "transition-[width] duration-200 ease-linear"
-            : ""
+        ${collapsible === "icon"
+          ? "transition-[width] duration-200 ease-linear"
+          : ""
         }
-        ${
-          isCollapsed && collapsible === "icon"
-            ? "w-[var(--sidebar-width-icon)]"
-            : "w-[var(--sidebar-width)]"
+        ${isCollapsed && collapsible === "icon"
+          ? "w-[var(--sidebar-width-icon)]"
+          : "w-[var(--sidebar-width)]"
         }
       `}
     >
@@ -138,21 +136,19 @@ export function AppSidebar() {
                         className={`
                           flex items-center gap-3 rounded-lg text-sm font-medium
                           transition-all duration-200 ease-linear
-                          ${
-                            isActive
-                              ? "bg-[#FFF4F1] text-gray-900"
-                              : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+                          ${isActive
+                            ? "bg-[#FFF4F1] text-gray-900"
+                            : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
                           }
                           px-3 py-2
                           group-data-[collapsible=icon]:justify-center
                         `}
                       >
                         <Icon
-                          className={`h-5 w-5 flex-shrink-0 transition-colors duration-150 ${
-                            isActive
-                              ? "text-[#FF8A5B]"
-                              : "text-gray-500 group-hover:text-gray-900"
-                          }`}
+                          className={`h-5 w-5 flex-shrink-0 transition-colors duration-150 ${isActive
+                            ? "text-[#FF8A5B]"
+                            : "text-gray-500 group-hover:text-gray-900"
+                            }`}
                         />
 
                         {/* Label: animate width and opacity so it disappears smoothly */}

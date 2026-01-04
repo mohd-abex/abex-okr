@@ -81,6 +81,16 @@ export const PUT = requireAuth(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    if (
+      updates.current_value !== undefined &&
+      updates.current_value > kr.target_value
+    ) {
+      return NextResponse.json(
+        { error: "Progress cannot exceed target value" },
+        { status: 400 }
+      );
+    }
+
     const { data, error } = await supabase
       .from("key_results")
       .update(updates)
