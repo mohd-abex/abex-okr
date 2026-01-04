@@ -28,14 +28,22 @@ export const GET = requireAuth(
     const { data, error } = await supabase
       .from("objectives")
       .select(
-        "id, title, description, team:team_id(id,name), start_date, end_date, progress, status, created_at"
+        "id, title, description, team:team_id(id,name), start_date, end_date, progress, status, created_at, key_results(count)"
       )
       .in("team_id", teamIds);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
-    return NextResponse.json(data, { status: 200 });
+
+    // Flatten the count
+    const objectivesWithCount = data.map((obj: any) => ({
+      ...obj,
+      key_results_count: obj.key_results?.[0]?.count ?? 0,
+      key_results: undefined, // Remove the array structure from response
+    }));
+
+    return NextResponse.json(objectivesWithCount, { status: 200 });
   }
 );
 

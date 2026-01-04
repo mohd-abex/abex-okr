@@ -54,6 +54,11 @@ export default function UpdateProgressModal({
       return;
     }
 
+    if (kr?.target_value !== undefined && parsed > kr.target_value) {
+      setError(`Value cannot exceed the target of ${kr.target_value}`);
+      return;
+    }
+
     setLoading(true);
     try {
       await onSubmit(parsed);

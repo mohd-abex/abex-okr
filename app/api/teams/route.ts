@@ -30,12 +30,19 @@ export const POST = requireAuth(
     const body = await req.json();
     const { name, lead_id } = body;
 
+    if (!user.organization_id) {
+      return new Response(
+        JSON.stringify({ error: "Organization ID is missing" }),
+        { status: 400 }
+      );
+    }
+
     const { data, error } = await supabase
       .from("teams")
       .insert([
         {
           name,
-          lead_id,
+          lead_id: lead_id || null, // Ensure explicit null if undefined
           organization_id: user.organization_id,
         },
       ])

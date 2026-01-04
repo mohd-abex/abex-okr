@@ -59,7 +59,7 @@ export function TopNav() {
         />
       </div>
 
-      <div className="flex items-center justify-between w-full bg-gray-100 border border-slate-200 px-4 py-2 shadow-sm rounded-full sm:px-6 sm:py-4">
+      <div className="flex items-center justify-between w-full bg-gray-100 border border-slate-200 px-4 py-2 h-[4.6rem] shadow-sm rounded-full sm:px-6 sm:py-4">
         {/* Left: Sidebar trigger + active icon + greeting */}
         <div className="flex items-center gap-3 sm:gap-4">
           <TooltipWrapper tooltip="Toggle Sidebar">
