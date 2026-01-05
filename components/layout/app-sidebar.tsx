@@ -90,14 +90,24 @@ export function AppSidebar() {
             priority
             className="block"
           />
-          <div className="mt-1 flex items-baseline">
-            <span className="text-[28px] font-extrabold tracking-tight text-gray-900">
-              OKR
-            </span>
-            <span
-              aria-hidden
-              className="ml-1.5 inline-block h-2 w-2 rounded-full bg-[#FF8A5B] -translate-y-0.5"
+          <div className="mt-1 flex items-center gap-2">
+            <Image
+              src="/app-logo.svg"
+              alt="okr.abex.work"
+              width={40}
+              height={40}
+              priority
+              className="block"
             />
+            <div>
+              <span className="text-[36px] font-extrabold tracking-tight text-gray-900">
+                OKR
+              </span>
+              <span
+                aria-hidden
+                className="ml-1.5 inline-block h-2 w-2 rounded-full bg-[#FF8A5B] -translate-y-0.5"
+              />
+            </div>
           </div>
           <div className="mt-5 h-px w-full bg-gray-200" />
         </div>
